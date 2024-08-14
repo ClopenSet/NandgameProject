@@ -1,0 +1,9 @@
+# 忽略 Verilog 生成的编译文件
+verilog_files/*.vvp
+verilog_files/*.vcd
+
+# 忽略 json_archives 中的格式规整的 JSON 存档
+json_archives/*_formatted.json
+
+# 忽略 macOS 的 .DS_Store 文件
+.DS_Store
