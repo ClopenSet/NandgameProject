@@ -1,91 +1,102 @@
-module GateLevel_SR_Latch(
-    input wire s,
-    input wire r,
-    output wire q
+`include "SR_Latch.v"
+
+/*
+
+SR latch
+Input	Output
+s	r	
+1	0	1
+0	1	0
+1	1	Previous output
+0	0	Not used
+
+
+Input	Output
+st	d		
+1	0	0
+1	1	1
+0	1	Same as previous
+0	0	Same as previous
+
+对比知道新的真值表：
+
+st  d   s	r   Output
+1   1   1	0	1
+1   0  	0	1   0
+0   1   1	1	Previous output
+0   0   1	1	Previous output
+
+由此知道
+s = ~st | d = st ~& d ~& st
+r = st ~& d
+
+*/
+
+
+module Basic_D_Latch(
+    input wire d,      // Data input
+    input wire st,     // Enable signal
+    output reg q       // Output
 );
 
-wire q_n;
-
-nand (q,s,q_n);
-nand (q_n,r,q);
-    
-endmodule
-
-module Basic_SR_Latch(
-    input wire S,
-    input wire R,
-    output reg Q
-);
-
-always @(S, R) begin
-    if (S == 1 && R == 0)
-        Q <= 0;  // Set to 0 
-    else if (S == 0 && R == 1)
-        Q <= 1;  // Reset to 1 
-    else if (S == 1 && R == 1)
-        Q <= Q;  // Hold previous state
-    // S = 0, R = 0 - Assuming it maintains previous state if not unused
+always @(st or d) begin
+    if (st) begin
+        q <= d;  
+    end
 end
 
 endmodule
 
+module GateLevel_D_Latch (
+    output q,
+    input st,
+    input d
+);
 
+wire mid = st ~& d; // 直接用运算符表示
+
+GateLevel_SR_Latch srlatch (
+    .s(mid ~& st),
+    .r(mid),
+    .q(q)
+);
+
+endmodule
+
+`ifdef TB_D_LATCH
 `timescale 1ns / 1ps
 
-module tb_SR_Latch;
+module test_D_Latch;
 
-    // Inputs
-    reg S;
-    reg R;
+    reg st, d;
+    wire q_basic, q_gate;
 
-    // Outputs from gate-level implementation
-    wire Q_gate;
+    // 实例化基本 D 锁存器
+    Basic_D_Latch basic_latch(.q(q_basic), .st(st), .d(d));
 
-    // Outputs from behavior-level implementation
-    wire Q_behavior;
-
-    // Instantiate the Gate-Level SR Latch
-    GateLevel_SR_Latch uut_gate (
-        .s(S), 
-        .r(R), 
-        .q(Q_gate)
-    );
-
-    // Instantiate the Behavior-Level SR Latch
-    Basic_SR_Latch uut_behavior (
-        .S(S),
-        .R(R),
-        .Q(Q_behavior)
-    );
+    // 实例化基于 SR 锁存器的 D 锁存器
+    GateLevel_D_Latch gate_latch(.q(q_gate), .st(st), .d(d));
 
     initial begin
-        // Initialize Inputs
-        S = 0; R = 0;
-        #100;  // Initial stabilization delay
+        // 初始化输入
+        st = 0; d = 0;
 
-        // Test Sequence
-        // Test Set Condition (S=1, R=0)
-        S = 1; R = 0;
-        #10;  // Wait 10 ns to observe the behavior
-        $display("Test Set: S=1, R=0 -> Q_gate=%b, Q_behavior=%b", Q_gate, Q_behavior);
+        // 监视输出和输入
+        $monitor("Time = %t, st = %b, d = %b, q_basic = %b, q_gate = %b",
+                 $time, st, d, q_basic, q_gate);
 
-        // Test Reset Condition (S=0, R=1)
-        S = 0; R = 1;
-        #10;  // Wait 10 ns to observe the behavior
-        $display("Test Reset: S=0, R=1 -> Q_gate=%b, Q_behavior=%b", Q_gate, Q_behavior);
-
-        // Test Hold Condition (S=1, R=1)
-        S = 1; R = 1;
-        #10;  // Wait 10 ns to observe the behavior
-        $display("Test Hold: S=1, R=1 -> Q_gate=%b, Q_behavior=%b", Q_gate, Q_behavior);
-
-        // Test Unused Condition (S=0, R=0) - Optional, if needed
-        S = 0; R = 0;
-        #10;  // Wait 10 ns to observe the behavior
-        $display("Test Unused: S=0, R=0 -> Q_gate=%b, Q_behavior=%b", Q_gate, Q_behavior);
-
-        // Finish Simulation
-        $finish;
+        // 输入序列
+        #10 d = 1;
+        #10 st = 1; d = 0;
+        #10 d = 1;
+        #10 st = 0; d = 0;
+        #10 d = 1;
+        #10 st = 1; d = 0;
+        #10 st = 0;
+        #10 d = 1;
+        #10 $finish;
     end
-    
+
 endmodule
+
+`endif

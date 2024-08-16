@@ -1,13 +1,8 @@
-module D_Latch(output reg q, input st, input d);
-    always @ (st) begin
-        if (st == 1) q <= d;
-    end
-endmodule
-
+`include "D_Latch.v"
 module GateLevelDFF(output q, input st, input d, input cl);
     wire stored_value;
-    D_Latch d1(.q(q), .st(~cl), .d(stored_value));
-    D_Latch d2(.q(stored_value), .st(st & cl), .d(d));
+    Basic_D_Latch d1(.q(q), .st(~cl), .d(stored_value));
+    Basic_D_Latch d2(.q(stored_value), .st(st & cl), .d(d));
 endmodule
 
 module BasicDFF(output reg q, input st, input d, input cl);

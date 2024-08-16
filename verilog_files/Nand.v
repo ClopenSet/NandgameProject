@@ -1,4 +1,3 @@
-
 module Relay_off(
     input wire c, //magnet
     input wire in,
@@ -36,6 +35,7 @@ module BasicNand(
 endmodule
 
 
+`ifdef TB_NAND
 
 `timescale 1ns / 1ps
 
@@ -115,3 +115,5 @@ module TestBench_with_wave;
         $finish;
     end
 endmodule
+
+`endif
