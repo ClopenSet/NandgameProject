@@ -1,3 +1,6 @@
+`ifndef ARITHMETICUNIT_V
+`define ARITHMETICUNIT_V
+
 module BasicArithmeticUnit(
     input [15:0] X,
     input [15:0] Y,
@@ -49,3 +52,5 @@ module GateLevelArithmeticUnit(
         .y(out)
     );
 endmodule
+
+`endif // ARITHMETICUNIT_V

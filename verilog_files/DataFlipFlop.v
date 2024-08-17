@@ -1,3 +1,6 @@
+`ifndef DATAFLIPFLOP_V
+`define DATAFLIPFLOP_V
+
 `include "D_Latch.v"
 module GateLevelDFF(output q, input st, input d, input cl);
     wire stored_value;
@@ -47,3 +50,5 @@ module Testbench;
     end
 endmodule
 
+
+`endif // DATAFLIPFLOP_V

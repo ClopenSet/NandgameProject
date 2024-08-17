@@ -1,3 +1,6 @@
+`ifndef INCREMENT_V
+`define INCREMENT_V
+
 `include "MultibitAdder.v"
 module BasicIncrement(
     input [15:0] in,  
@@ -99,3 +102,4 @@ module Testbench;
 endmodule
 
 `endif
+`endif // INCREMENT_V

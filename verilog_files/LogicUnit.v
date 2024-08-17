@@ -1,3 +1,7 @@
+`ifndef LOGICUNIT_V
+`define LOGICUNIT_V
+
+`include "Selector.v"
 module BasicLogicUnit(
     input [15:0] X,         // 16位输入X
     input [15:0] Y,         // 16位输入Y
@@ -61,3 +65,6 @@ module GateLevelLogicUnit(
     );
 
 endmodule
+
+
+`endif // LOGICUNIT_V

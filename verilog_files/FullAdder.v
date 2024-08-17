@@ -1,3 +1,6 @@
+`ifndef FULLADDER_V
+`define FULLADDER_V
+
 module BasicFullAdder(
     input wire a,
     input wire b,
@@ -107,3 +110,4 @@ module Testbench;
 endmodule
 
 `endif
+`endif // FULLADDER_V

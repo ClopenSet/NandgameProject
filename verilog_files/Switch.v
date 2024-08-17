@@ -1,3 +1,6 @@
+`ifndef SWITCH_V
+`define SWITCH_V
+
 module BasicSwitch(
     input wire s,
     input wire d,
@@ -74,3 +77,4 @@ module tb_Switch;
       
 endmodule
 `endif
+`endif // SWITCH_V

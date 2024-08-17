@@ -1,3 +1,6 @@
+`ifndef AND_V
+`define AND_V
+
 `include "Invert.v"
 
 module GateLevelAnd (
@@ -20,3 +23,5 @@ assign q= a & b;
 
 endmodule
 
+
+`endif // AND_V

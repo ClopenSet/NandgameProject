@@ -1,3 +1,6 @@
+`ifndef MULTIBITADDER_V
+`define MULTIBITADDER_V
+
 module BasicMultiBitAdder(
     input [1:0] a,
     input [1:0] b,
@@ -109,3 +112,4 @@ module BasicAdd16(
 assign {cout,sum} = a + b + cin;
     
 endmodule
+`endif // MULTIBITADDER_V

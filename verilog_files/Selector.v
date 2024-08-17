@@ -1,3 +1,6 @@
+`ifndef SELECTOR_V
+`define SELECTOR_V
+
 module GateLevelSelector(
     input wire d0,
     input wire d1,
@@ -93,3 +96,4 @@ module tb_Selector;
       
 endmodule
 `endif
+`endif // SELECTOR_V

@@ -1,3 +1,6 @@
+`ifndef D_LATCH_V
+`define D_LATCH_V
+
 `include "SR_Latch.v"
 
 /*
@@ -100,3 +103,4 @@ module test_D_Latch;
 endmodule
 
 `endif
+`endif // D_LATCH_V

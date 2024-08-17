@@ -1,3 +1,6 @@
+`ifndef LESSTHANZERO_V
+`define LESSTHANZERO_V
+
 module GateLevelLessThanZero(
     input signed [15:0] num,
     output lessthan0
@@ -59,3 +62,5 @@ module tb_LessThanZero;
 endmodule
 `endif
 
+
+`endif // LESSTHANZERO_V

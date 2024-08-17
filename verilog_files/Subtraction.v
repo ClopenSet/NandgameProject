@@ -1,3 +1,6 @@
+`ifndef SUBTRACTION_V
+`define SUBTRACTION_V
+
 `include "MultiBitAdder.v"
 
 module BasicSubtraction(
@@ -35,3 +38,5 @@ BasicAdd16 adder(
 );
 
 endmodule
+
+`endif // SUBTRACTION_V

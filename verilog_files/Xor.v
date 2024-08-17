@@ -1,3 +1,6 @@
+`ifndef XOR_V
+`define XOR_V
+
 module BasicXor(
     input wire a,
     input wire b,
@@ -93,3 +96,4 @@ module TestBench;
 endmodule
 
 `endif
+`endif // XOR_V

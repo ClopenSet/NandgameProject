@@ -1,3 +1,6 @@
+`ifndef EQUALTOZERO_V
+`define EQUALTOZERO_V
+
 module BasicEqualToZero(
     input [3:0] a,
     output q
@@ -20,3 +23,4 @@ module BasicEqualToZero16(
     assign q = ( a== 0 );
 
 endmodule
+`endif // EQUALTOZERO_V

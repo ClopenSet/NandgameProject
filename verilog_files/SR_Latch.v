@@ -1,3 +1,6 @@
+`ifndef SR_LATCH_V
+`define SR_LATCH_V
+
 /*
 
 Input	Output
@@ -108,3 +111,4 @@ module tb_SR_Latch;
 endmodule
 
 `endif
+`endif // SR_LATCH_V

@@ -1,3 +1,6 @@
+`ifndef OR_V
+`define OR_V
+
 `include "Invert.v"
 
 module BasicOr(
@@ -19,3 +22,5 @@ GateLevelInvert invertb(b,n_b);
 nand (q,n_a,n_b);
     
 endmodule
+
+`endif // OR_V

@@ -1,3 +1,6 @@
+`ifndef NAND_V
+`define NAND_V
+
 module Relay_off(
     input wire c, //magnet
     input wire in,
@@ -117,3 +120,4 @@ module TestBench_with_wave;
 endmodule
 
 `endif
+`endif // NAND_V

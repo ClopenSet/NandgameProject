@@ -1,3 +1,6 @@
+`ifndef INVERT_V
+`define INVERT_V
+
 module BasicInvert(
     input wire a,
     output wire q
@@ -48,3 +51,4 @@ module testbench;
 endmodule
 
 `endif
+`endif // INVERT_V

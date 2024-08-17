@@ -1,3 +1,6 @@
+`ifndef HALFADDER_V
+`define HALFADDER_V
+
 module BasicHalfAdder(
     input wire a,
     input wire b,
@@ -72,3 +75,4 @@ module TestBench;
 endmodule
 
 `endif
+`endif // HALFADDER_V
