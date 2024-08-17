@@ -21,14 +21,14 @@ module GateLevelHalfAdder(
     wire a_nand_b;
     wire C;
     wire D;
-    
     // 手动展开来优化 xor(sum, a, b) 和 and(carry, a, b)
-
+    
     nand (a_nand_b,a,b);
     GateLevelInvert invertgatelevel(a_nand_b,h);
     nand (C,a_nand_b,a);
     nand (D,a_nand_b,b);
     nand (l,C,D);
+
 
 endmodule
 
