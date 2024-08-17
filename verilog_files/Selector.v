@@ -23,6 +23,16 @@ module BasicSelector(
     assign q = s ? d1 : d0;
 endmodule
 
+module Mux2to1_Hex(
+    input [15:0] a,  // 输入a
+    input [15:0] b,  // 输入b
+    input sel,  // 选择信号
+    output [15:0] y   // 输出
+);
+    // 选择器逻辑
+    assign y = (sel) ? b : a;
+endmodule
+
 
 `ifdef TB_SELECTOR
 `timescale 1ns / 1ps
