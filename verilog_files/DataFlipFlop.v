@@ -18,6 +18,7 @@ module BasicDFF(output reg q, input st, input d, input cl);
     end
 endmodule
 
+`ifdef TB_DATAFLIPFLOP
 
 module Testbench;
     reg st, d, cl;
@@ -50,5 +51,6 @@ module Testbench;
     end
 endmodule
 
+`endif 
 
 `endif // DATAFLIPFLOP_V
