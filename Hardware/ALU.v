@@ -75,8 +75,8 @@ module TestBenchALU;
         // 测试序列
         #10 {X, Y, u, op1, op0, zx, sw} = {16'h7, 16'h4, 1'b1, 1'b0, 1'b0, 1'b0, 1'b0}; //000b
         #10 {X, Y, u, op1, op0, zx, sw} = {16'h7, 16'h4, 1'b1, 1'b1, 1'b0, 1'b0, 1'b0}; //0003
-        #10 {X, Y, u, op1, op0, zx, sw} = {16'h7, 16'h4, 1'b1, 1'b1, 1'b0, 1'b1, 1'b0}; //fffc
         #10 {X, Y, u, op1, op0, zx, sw} = {16'h7, 16'h4, 1'b1, 1'b1, 1'b0, 1'b0, 1'b1}; //fffd
+        #10 {X, Y, u, op1, op0, zx, sw} = {16'h7, 16'h4, 1'b1, 1'b1, 1'b0, 1'b1, 1'b0}; //fffc
         #10 {X, Y, u, op1, op0, zx, sw} = {16'h7, 16'h4, 1'b1, 1'b1, 1'b0, 1'b1, 1'b1}; //fff9
         #10 {X, Y, u, op1, op0, zx, sw} = {16'h0, 16'h0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}; //0000
         #10 {X, Y, u, op1, op0, zx, sw} = {16'h0, 16'hFFFF, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}; //0000
