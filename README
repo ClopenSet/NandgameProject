@@ -1,21 +1,152 @@
-## 布尔代数基础
--- 大致如此，待修改
-一元运算真值表有两行，理论上有2^2=4种运算。a为变量
-第一种，恒0，一般表示为F或者False。也可以表示为1'b0。
-第二种，恒1，一般表示为T或者True。也可以表示为 1'b1。
-第三种，和a相同，就是a。
-第四种，和a相反，一般表示为 非 (~) = 取反（neg，¬）= 否定（negation）=“补”（complement)。逻辑非一般使用（!）
+# NandgameProject README
+## Language Versions
+- [中文文档](./Documents/README_zh.md)
+## Project Introduction
+NandgameProjects is a project developed based on Nandgame [Nandgame Official Webite](https://nandgame.com/), which uses a gamified approach to deeply immerse users in the world of digital logic gates and circuit design, thereby mastering computer hardware knowledge. This project aims to provide equivalent and rigorous Verilog code to help users systematically learn the fundamentals of computer technology.
 
-二元运算的真值表有四行，那么理论上有2^4=16种运算。
-第一二种，恒0或恒1。这个已经讨论过
-第三四五六种，就是a或~a或b或~b。退化为一元运算。
-第七种，与，一般表示为 和 （&）  = 交（wedge) = 合取(conjunction) = “加法，和” 。逻辑和一般使用&&
-第八种，或，一般表示为或 （ | ) = 并（vee，∨）= 析取(disjunction) = “乘法，积”。逻辑或一般使用 || 
-第九种，与非，一般表示为 a ~& b 或者 nand
-第十种，或非，一般表示为a ~| b 或者 nor
-第十一种，异或，一般表示为xor或⊕或^，掌握其cnf和dnf
-第十二种，同或，或者叫异或非，表示为xnor或者~^，从xor可以推导其cnf和dnf
-第十三种，a蕴含b，一般表示为a→b，表示为~a | b。掌握 ~a | b = a ~& b ~& a
-第十四种，b蕴含a，同上
-第十五种，a不蕴含b，表示为~a & b。掌握 a & ~b = a ~| b ~| a
-第十六种，b不蕴含a，同上
+## Project Structure and Features
+
+NandgameProjects contains the following main directories and files:
+
+- **Gamesave**: Contains game save files.
+  - `state.json`: Game save that can be imported into the game's official website interface to view the graphical interface.(this part is not completed)
+
+- **Hardware** : Contains Verilog description files for all hardware components.
+  - `ALU.v`: Arithmetic Logic Unit
+  - And many more related Verilog files
+
+- **Software** (this part is not completed): Will contain files related to software implementation.
+
+- **Optional_Levels** (this part is not completed): Contains Verilog files for optional challenges.
+  - `CMOS.v`: CMOS circuit description.
+  - And many more related Verilog files
+
+## Quick Start
+### Hardware Part and Optional Levels
+To facilitate testing each Verilog file, I have included a test macro with the same name as the file in each file. You can follow the steps below to run the tests:
+
+1. **Compile Verilog Files:**
+   Use the following command to compile each file, where `$fileNameWithoutExt` is the filename without the extension:
+    ```bash
+    iverilog -g2012 -D`echo TB_$fileNameWithoutExt | tr '[a-z]' '[A-Z]'` -o $fileNameWithoutExt.vvp $fileName
+    ```
+2. **Execute the Compiled Program:**
+    Run the following command to execute the generated VVP:
+    ```bash
+    vvp $fileNameWithoutExt.vvp
+    ```
+3. **View Waveform Files:**
+    If the test generated waveform files, use GTKWave to view the waveforms:
+    ```bash
+    gtkwave $fileNameWithoutExt.vcd
+    ```
+### Software Part
+To be completed
+
+## Start from Scratch
+### Setting Up Your Environment
+
+#### For Mac and Linux Users:
+- **Installing Icarus Verilog and GTKWave**:
+  - On macOS, you can install these tools via Homebrew:
+    ```bash
+    brew install iverilog gtkwave
+    ```
+  - For ARM architecture macOS (such as M1/M2 Macs), you may need to install the head version of GTKWave:
+    ```bash
+    brew install --HEAD gtkwave
+    ```
+  - For x86 architecture Linux, you can use the system's package manager to install, for example on Ubuntu:
+    ```bash
+    sudo apt-get install iverilog gtkwave
+    ```
+
+#### For Windows Users:
+- Installing Icarus Verilog and GTKWave on Windows can be done as follows:
+  - Download and install the Windows versions of Icarus Verilog and GTKWave. The official websites usually provide installers.
+  - Or use WSL (Windows Subsystem for Linux) to run a Linux environment on Windows, and follow the Linux instructions to install these tools.
+
+### Knowledge Preparation
+Before you begin, it is advisable to understand the following basic knowledge:
+- **Boolean Algebra**:
+  - Truth tables
+  - Unary and binary Boolean operations 
+  - CNF & DNF & Karnaugh maps
+  - Common Boolean identities (especially De Morgan's laws)
+
+- **Modularity and Hierarchical Thinking**:
+  - Understand how to decompose complex systems into simpler modules
+  - Learn how to organize modules to build complex systems
+
+To gain a deeper understanding of these concepts and effectively apply them to the project, we provide a detailed technical document where you can find more explanations and examples of these foundational topics.
+
+- [Read the Detailed Technical Guide](./Documents/Technical_Guide.md)
+
+### Starting from Scratch: A Suggestion to Begin with Nandgame
+- Start by playing the game at the [Nandgame official website](https://nandgame.com/). Follow the instructions on the website.
+- If you encounter difficulties at any level, you can check the corresponding Verilog code and try to convert it into equivalent circuit connections.
+- In the Verilog code, I provide detailed implementation ideas to help you understand the working principles of each circuit.
+
+### Learning Suggestions
+- Compare the gate-level descriptions in Verilog with the actual circuit connections to deepen your understanding of the circuits;
+- Compare gate-level descriptions to behavioral descriptions to enhance your understanding of Verilog syntax.
+
+### Viewing Order
+#### Verilog File Viewing Order
+The Verilog files in this project follow the same sequence as in Nandgame. Please view them in this order:
+##### Hardware Part
+- **Logic Gates**
+  - `Nand.v`: Basic NAND gate
+  - `Invert.v`: Inverter
+  - `And.v`: AND gate
+  - `Or.v`: OR gate
+  - `Xor.v`: XOR gate
+
+- **Arithmetic Operations**
+  - `HalfAdder.v`: Half adder
+  - `FullAdder.v`: Full adder
+  - `Multi-bitAdder.v`: Multi-bit adder
+  - `Increment.v`: Incrementer
+  - `Subtraction.v`: Subtractor
+  - `EqualToZero.v`: Zero equality checker
+  - `LessThanZero.v`: Negative checker
+
+- **Switching**
+  - `Selector.v`: Selector
+  - `Switch.v`: Switch
+
+- **Arithmetic Logic Unit (ALU)**
+  - `LogicUnit.v`: Logic unit
+  - `ArithmeticUnit.v`: Arithmetic unit
+  - `ALU.v`: Arithmetic Logic Unit
+  - `Condition.v`: Condition checker
+
+- **Memory**
+  - `SR Latch.v`: SR Latch
+  - `D Latch.v`: D Latch
+  - `DataFlip-Flop.v`: Data flip-flop
+  - `Register.v`: Register
+  - `Counter.v`: Counter
+  - `RAM.v`: Random Access Memory
+
+- **Processor**
+  - `Combined Memory.v`: Combined memory
+  - `Instruction.v`: Instruction unit
+  - `Control Unit.v`: Control unit
+  - `Computer.v`: Complete computer
+
+##### Optional Levels
+To be completed
+
+#### Software Viewing Order
+To be completed
+
+### Further Reading
+With experience from Nandgame, you will be able to more smoothly and quickly gain a systematic understanding of computer hardware and software through the following two books:
+- **"Digital Design and Computer Architecture"** — This book provides foundational knowledge of computer hardware design.
+- **"Computer Systems: A Programmer's Perspective (CSAPP)"** — This book offers an in-depth exploration of every layer of computer systems.
+
+## Acknowledgments
+Special thanks to Nandgame for the inspiration and foundational resources. Support the original project by visiting the [Nandgame official website](https://nandgame.com/).
+
+## Welcome to the world of computer internals!
