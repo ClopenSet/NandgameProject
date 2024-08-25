@@ -47,12 +47,12 @@ To be completed
 ### Setting Up Your Environment
 
 #### For Mac and Linux Users:
-- **Installing Icarus Verilog and GTKWave**:
+- **Installing Icarus Verilog and GTKWave and Jq**:
   - On macOS, you can install these tools via Homebrew:
     ```bash
-    brew install iverilog gtkwave
+    brew install iverilog gtkwave jq
     ```
-  - For ARM architecture macOS (such as M1/M2 Macs), you may need to install the head version of GTKWave:
+  - For ARM architecture macOS (such as M1/M2 Macs), you need to install the head version of GTKWave:
     ```bash
     brew install --HEAD gtkwave
     ```
@@ -143,7 +143,7 @@ To be completed
 
 ### Further Reading
 With experience from Nandgame, you will be able to more smoothly and quickly gain a systematic understanding of computer hardware and software through the following two books:
-- **"Digital Design and Computer Architecture"** — This book provides foundational knowledge of computer hardware design.
+- **"Logic and Computer Design Fundamentals"** — This book provides foundational knowledge of computer hardware design.
 - **"Computer Systems: A Programmer's Perspective (CSAPP)"** — This book offers an in-depth exploration of every layer of computer systems.
 
 ## Acknowledgments

@@ -45,12 +45,12 @@ NandgameProjects 包含以下主要目录和文件：
 ### 运行环境准备
 
 #### 对于 Mac 和 Linux 用户：
-- **安装 Icarus Verilog 和 GTKWave**：
+- **安装 Icarus Verilog 和 GTKWave 和 Jq**：
   - 在 macOS 上，你可以通过 Homebrew 安装这些工具：
     ```bash
     brew install iverilog gtkwave
     ```
-  - 对于 ARM 架构的 macOS（如 M1/M2 Mac），可能需要安装 GTKWave 的头版本：
+  - 对于 ARM 架构的 macOS（如 M1/M2 Mac），需要安装 GTKWave 的头版本：
     ```bash
     brew install --HEAD gtkwave
     ```
