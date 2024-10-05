@@ -8,3 +8,6 @@ Gamesave/*_formatted.json
 
 # 忽略临时文件
 *tempCodeRunnerFile*
+
+# 忽略 Unadded_documents 文件夹及其所有内容
+Unadded_documents/
